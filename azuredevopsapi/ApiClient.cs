@@ -20,7 +20,7 @@ namespace azuredevopsapi
         public ApiClient() {
             var options = new RestClientOptions(BASE_URL)
             {
-                Authenticator = new HttpBasicAuthenticator("m.younas@edevtech.com", "4ymmxu4sq67i5djn3l65zi55uxaffeawkws77pzsuk7ljjgzbroa")
+                Authenticator = new HttpBasicAuthenticator("m.younas@edevtech.com", "secret")
             };
             restClient = new RestClient(options);
             restClient.AddDefaultHeader("Content-Type", "application/json-patch+json");
