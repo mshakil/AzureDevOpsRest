@@ -1,0 +1,6 @@
+packages
+ApiTests/bin
+ApiTests/Obj
+azuredevopsapi/bin
+azuredevopsapi/Obj
+.vs/
