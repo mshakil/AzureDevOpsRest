@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace azuredevopsapi.Models.Response
 {
-    public class CreateWorkItemResponse
+    public class WorkItemResponse
     {
         public int id { get; set; }
         public int rev { get; set; }

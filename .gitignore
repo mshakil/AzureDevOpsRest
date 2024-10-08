@@ -5,3 +5,4 @@ azuredevopsapi/bin
 azuredevopsapi/Obj
 .vs/
 ApiTests/.env
+/.env

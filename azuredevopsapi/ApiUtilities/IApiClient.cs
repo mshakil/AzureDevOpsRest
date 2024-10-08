@@ -11,5 +11,7 @@ namespace azuredevopsapi.ApiUtilities
     {
         Task<RestResponse> CreateWorkItem<T>(string payload, string workItemType);
 
+        Task<RestResponse> GetWorkItem<T>(int workItem);
+
     }
 }

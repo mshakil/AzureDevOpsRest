@@ -14,6 +14,7 @@ namespace ApiTests.WorkItemTest
         protected string USER_PAT { get; set; }
         protected string ORGANIZATION_NAME { get; set; }
         protected string PROJECT_GUID { get; set; }
+        protected string API_VERSION { get; set; }
 
         [SetUp]
         public void LoadEnvironmentVariables() {
@@ -24,6 +25,7 @@ namespace ApiTests.WorkItemTest
             USER_PAT = Environment.GetEnvironmentVariable("USER_PAT");
             ORGANIZATION_NAME = Environment.GetEnvironmentVariable("ORGANIZATION_NAME");
             PROJECT_GUID = Environment.GetEnvironmentVariable("PROJECT_GUID");
+            API_VERSION = Environment.GetEnvironmentVariable("API_VERSION");
         }
     }
 }

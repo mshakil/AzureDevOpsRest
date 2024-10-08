@@ -65,15 +65,15 @@ namespace ApiTests.WorkItemTest
             
 
             string jsonPayload = JsonConvert.SerializeObject(fields, Formatting.Indented);
-            var api = new ApiClient(BASE_URL, USER_NAME, USER_PAT, ORGANIZATION_NAME, PROJECT_GUID);
+            var api = new ApiClient(BASE_URL, USER_NAME, USER_PAT, ORGANIZATION_NAME, PROJECT_GUID, API_VERSION);
 
-            restResponse = await api.CreateWorkItem<CreateWorkItemResponse>(jsonPayload, workItemType);
+            restResponse = await api.CreateWorkItem<WorkItemResponse>(jsonPayload, workItemType);
 
             statusCode = restResponse.StatusCode;
             var code = (int)statusCode;
             Assert.That(code, Is.EqualTo(200));
 
-            var content = HandleContent.GetContent<CreateWorkItemResponse>(restResponse);
+            var content = HandleContent.GetContent<WorkItemResponse>(restResponse);
             Assert.That(content.fields["System.Title"], Is.EqualTo(workItemName));
             Assert.That(content.fields["System.Tags"], Is.EqualTo(workItemTags));
             Assert.That(content.fields["System.Description"], Is.EqualTo(workItemDescription));
@@ -81,6 +81,23 @@ namespace ApiTests.WorkItemTest
             Console.WriteLine($"Workitem Id is: {content.id}");
             Console.WriteLine($"Workitem Title is: {content.fields["System.Title"]}");
 
+        }
+
+        [Test]
+        public async Task GetWorkItem() {
+
+            int workItemId = 4;
+            var api = new ApiClient(BASE_URL, USER_NAME, USER_PAT, ORGANIZATION_NAME, PROJECT_GUID, API_VERSION);
+
+            restResponse = await api.GetWorkItem<WorkItemResponse>(workItemId);
+
+            statusCode = restResponse.StatusCode;
+            var code = (int)statusCode;
+            Assert.That(code, Is.EqualTo(200));
+
+            var content = HandleContent.GetContent<WorkItemResponse>(restResponse);
+            Console.WriteLine($"Workitem Id is: {content.id}");
+            Console.WriteLine($"Workitem Title is: {content.fields["System.Title"]}");
         }
     }
 }
