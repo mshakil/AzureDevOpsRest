@@ -42,8 +42,8 @@ namespace azuredevopsapi.Authentication
             var request = new RestRequest("oauth2/token").
                 AddParameter("grant_type", "client_credentials");
 
-            var response = await client.PostAsync<TokenResponseRest>(request);
-            return $"{response.tokenType} {response.accessToken}";
+            //var response = await client.PostAsync<TokenResponseRest>(request);
+            return $"Hello";
         }
     }
 }

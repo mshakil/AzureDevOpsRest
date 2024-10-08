@@ -1,4 +1,4 @@
-﻿using azuredevopsapi;
+﻿using azuredevopsapi.ApiUtilities;
 using azuredevopsapi.Models.Request;
 using azuredevopsapi.Models.Response;
 using azuredevopsapi.Utility;
