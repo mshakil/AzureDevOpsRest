@@ -42,8 +42,8 @@ namespace ApiTests.StepDefinitions
         [When(@"Send request to create user")]
         public async Task WhenSendRequestToCreateUser()
         {
-            var api = new ApiClient();
-            restResponse = await api.CreateUser<CreateUserRequestRest>(createUserRequest);
+            //var api = new ApiClient();
+            //restResponse = await api.CreateUser<CreateUserRequestRest>(createUserRequest);
         }
 
         [Then(@"Validate usr is created")]

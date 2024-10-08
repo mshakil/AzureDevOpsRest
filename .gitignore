@@ -4,3 +4,4 @@ ApiTests/Obj
 azuredevopsapi/bin
 azuredevopsapi/Obj
 .vs/
+ApiTests/.env

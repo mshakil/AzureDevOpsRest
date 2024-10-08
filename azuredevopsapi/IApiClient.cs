@@ -16,7 +16,7 @@ namespace azuredevopsapi
         Task<RestResponse> GetUser<T>(string userId);
         Task<RestResponse> GetListOfUsers<T>(int pageNumber);
 
-        Task<RestResponse> CreateWorkItem<T>(string payload);
+        Task<RestResponse> CreateWorkItem<T>(string payload, string workItemType);
 
 
     }

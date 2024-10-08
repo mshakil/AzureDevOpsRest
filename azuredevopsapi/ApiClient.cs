@@ -13,18 +13,27 @@ namespace azuredevopsapi
     {
         string organizationName { get; set; }
         string projectName { get; set; }
-        string workItemType { get; set;  }
+        string workItemType { get; set; }
+        private string BASE_URL { get; set; }
+
+        private string user_name {get; set;}
+
+        private string user_pat { get; set; }
 
         readonly RestClient restClient;
-        const string BASE_URL = "https://dev.azure.com/";
-        public ApiClient() {
+        
+        public ApiClient(string baseUrl, string username, string userPAT, string organizationName, string projectGuid) {
+            this.BASE_URL = baseUrl;
+            this.user_name = username;
+            this.user_pat = userPAT;
+            this.organizationName = organizationName;
+            this.projectName = projectGuid;
+
             var options = new RestClientOptions(BASE_URL)
             {
-                Authenticator = new HttpBasicAuthenticator("m.younas@edevtech.com", "secret")
+                Authenticator = new HttpBasicAuthenticator(user_name, user_pat)
             };
             restClient = new RestClient(options);
-            restClient.AddDefaultHeader("Content-Type", "application/json-patch+json");
-            
         }
         public async Task<RestResponse> CreateUser<T>(T payload) where T : class
         {
@@ -73,10 +82,9 @@ namespace azuredevopsapi
             return await restClient.ExecuteAsync<T>(request);
         }
 
-        public async Task<RestResponse> CreateWorkItem<T>(string payload) {
-            organizationName = "QAVolumetest";
-            projectName = "f69b64e4-dcbc-4d0b-b6c3-a3baa2cbb3f3";
-            workItemType = "Bug";
+        public async Task<RestResponse> CreateWorkItem<T>(string payload, string workItemType) {
+
+            restClient.AddDefaultHeader("Content-Type", "application/json-patch+json");
 
             var request = new RestRequest(Endpoints.CREATE_NEW_WI_ENDPOINT, Method.Post);
             request.AddUrlSegment("organization", organizationName);
